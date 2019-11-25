@@ -7,9 +7,9 @@
   "author": "EDA",
   "license": "ISC",
   "scripts": {
-    "client": "webpack-dev-server --hot --inline",
-    "dev": "node server & webpack --watch",
-    "server": "node server",
+    "dev": "run-p dev:server dev:client",
+    "dev:server": "nodemon server",
+    "dev:client": "webpack --watch",
     "start": "webpack && node server",
     "test": "jest --watchAll"
   },
@@ -32,6 +32,8 @@
     "express": "^4.16.4",
     "faker": "^4.1.0",
     "knex": "^0.20.2",
+    "nodemon": "^2.0.1",
+    "npm-run-all": "^4.1.5",
     "react-router-dom": "^5.1.2",
     "sqlite3": "^4.1.0",
     "superagent": "^5.0.2"
