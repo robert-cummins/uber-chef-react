@@ -13,6 +13,17 @@ function getChefsByCuisineAndLocation(cuisineId, location, db = database){
     return baseQuery
 }
 
-module,exports = {
-    getChefsByCuisineAndLocation
+
+function getChefCuisinesbyLocation(location, db = database){
+    return db('chefs')
+    .leftJoin('chefCuisine', 'chefCuisine.chef_id', 'chefs.chef_id')
+    .leftJoin('cuisine', "chefCuisine.cuisine_id", 'cuisine.cuisine_id')
+    .where('chefs.location', location)
+    
+    
+}
+
+module.exports = {
+    getChefsByCuisineAndLocation,
+    getChefCuisinesbyLocation
 }
