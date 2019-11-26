@@ -9,9 +9,12 @@ export const getChefs = (chefs) => {
     }
 }
 
-export function fetchChefs(){
-    getchefsByLocationAndCuisine()
+export function fetchChefs(id){
+    return dispatch => {
+    getchefsByLocationAndCuisine(id)
     .then(res => {
+        console.log(res.body)
         dispatch(getChefs(res.body))
     })
+}
 }
