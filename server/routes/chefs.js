@@ -11,14 +11,11 @@ router.get('/:id', (req, res) => {
                 res.json(chefs)
             })
     } else {
-
         db.getChefCuisinesbyLocation(location)
             .then(chefs => {
-        
                 res.json(chefs)
             })
     }
-
 })
 
 module.exports = router

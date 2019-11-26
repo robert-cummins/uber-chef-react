@@ -1,3 +1,5 @@
-// import request from 'superagent'
+import request from 'superagent'
 
-// export
+export function getchefsByLocationAndCuisine(){
+    return request.get('/api/v1/chefs/:id')
+}
