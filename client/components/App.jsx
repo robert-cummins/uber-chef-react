@@ -10,6 +10,7 @@ const App = () => {
     <Navbar/>
     <Router>
       <Route exact path="/" component={Landing}/>
+      <Route exact path="/:id"/>
     </Router>
     </>
   )
