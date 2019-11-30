@@ -21,7 +21,7 @@ class Chefs extends React.Component {
                     </div>
                     )
                 })
-}
+            }
                 
             </div >
          )
