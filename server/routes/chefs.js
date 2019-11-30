@@ -4,14 +4,19 @@ const db = require('../db/chefs')
 
 router.get('/:id', (req, res) => {
     let location = req.params.id
-    console.log(location)
-    if (req.query.cuisine_id !== undefined) {
-        db.getChefsByCuisineAndLocation(req.query.cuisine_id, location)
+    let cuisine = parseInt(Object.values(req.query))
+    console.log(cuisine)
+    if (cuisine !== NaN) {
+        
+        db.getChefsByCuisineAndLocation(cuisine, location)
             .then(chefs => {
+                
                 res.json(chefs)
             })
-    } else {
+    } 
+    else {
         db.getChefCuisinesbyLocation(location)
+        console.log('hello')
             .then(chefs => {
                 res.json(chefs)
             })

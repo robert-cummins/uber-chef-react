@@ -9,8 +9,9 @@ import Chef from './Chef'
 const App = () => {
   return (
     <>
-    <Navbar/>
+    
     <Router>
+    <Navbar/>
       <Route exact path="/" component={Landing}/>
       <Route exact path="/:location" component={Chefs}/>
       <Route exact path="/:location/:id" component={Chef}/>
