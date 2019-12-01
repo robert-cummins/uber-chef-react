@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-
+import { fetchChefs } from '../actions/index'
 import { connect } from 'react-redux'
 
 
@@ -8,13 +8,16 @@ class Navbar extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            query: '?cuisine_id=201'
+            cuisineId: "cuisine_id=201"
         }
     }
 
     handleCuisineChange = e => {
-        console.log(this.props.chefs[0].location)
-        this.setState({ location: e.target.value })
+        this.setState({ cuisineId: e.target.value })
+    }
+
+    handleSubmit = e => {
+        this.props.dispatch(fetchChefs(this.props.chefs[0].location, this.state.cuisineId))
     }
     
    
@@ -29,18 +32,18 @@ class Navbar extends React.Component {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <form className="form-inline my-2 my-lg-0 " id="cuisine-form">
                         <select onChange={this.handleCuisineChange} className="form-control" id="cuisine-select" name="cuisine_id">
-                            <option value="?cuisine_id=201">Mexican</option>
-                            <option value="?cuisine_id=202">Italian</option>
-                            <option value="?cuisine_id=203">French</option>
-                            <option value="?cuisine_id=204">Thai</option>
-                            <option value="?cuisine_id=205">Indian</option>
-                            <option value="?cuisine_id=206">Japenese</option>
-                            <option value="?cuisine_id=207">American</option>
-                            <option value="?cuisine_id=208">Malaysian</option>
-                            <option value="?cuisine_id=210">Greek</option>
+                            <option value="cuisine_id=201">Mexican</option>
+                            <option value="cuisine_id=202">Italian</option>
+                            <option value="cuisine_id=203">French</option>
+                            <option value="cuisine_id=204">Thai</option>
+                            <option value="cuisine_id=205">Indian</option>
+                            <option value="cuisine_id=206">Japenese</option>
+                            <option value="cuisine_id=207">American</option>
+                            <option value="cuisine_id=208">Malaysian</option>
+                            <option value="cuisine_id=210">Greek</option>
                         </select>
                         {this.props.chefs[0] && 
-                        <Link to={`${this.state.location}`}><button type="submit" className="btn btn-outline-success my-2 my-sm-0 submit cuisine-submit" id="cuisine-submit" type="button">Search Style</button></Link>
+                        <button onClick={this.handleSubmit} type="submit" className="btn btn-outline-success my-2 my-sm-0 submit cuisine-submit" id="cuisine-submit" type="button">Search Style</button>
                         }
                     </form>
                     <div className="collapse navbar-collapse justify-content-end">

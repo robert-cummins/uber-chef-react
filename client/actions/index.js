@@ -11,6 +11,7 @@ export const getChefs = (chefs) => {
 
 export function fetchChefs(location, cuisine) {
     if(cuisine){
+        console.log(cuisine)
         return dispatch => {
             getchefsByLocationAndCuisine(location, cuisine)
             .then(res => {
@@ -24,7 +25,6 @@ export function fetchChefs(location, cuisine) {
         return dispatch => {
             getchefsByLocationAndCuisine(location)
                 .then(res => {
-                    console.log(res.body)
                     dispatch(getChefs(res.body))
                 })
         }
