@@ -14,16 +14,18 @@ function getChefsByCuisineAndLocation(cuisineId, location, db = database) {
 }
 
 
-function getChefCuisinesbyLocation(location, db = database) {
+function getChefsByLocation(location, db = database){
     return db('chefs')
-        .leftJoin('chefCuisine', 'chefCuisine.chef_id', 'chefs.chef_id')
-        .leftJoin('cuisine', "chefCuisine.cuisine_id", 'cuisine.cuisine_id')
-        .where('chefs.location', location)
+    .where('location', location)
+    .select()
 }
 
-
+function addChef(chef, db=database){
+    return db('chefs').insert(chef)
+}
 
 module.exports = {
     getChefsByCuisineAndLocation,
-    getChefCuisinesbyLocation,
+    getChefsByLocation,
+    addChef
 }

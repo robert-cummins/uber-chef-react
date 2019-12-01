@@ -10,14 +10,35 @@ router.get('/:id', (req, res) => {
             .then(chefs => {
                 res.json(chefs)
             })
-    } 
+    }
     else {
-        db.getChefCuisinesbyLocation(location)
+        db.getChefsByLocation(location)
             .then(chefs => {
                 res.json(chefs)
             })
     }
 })
 
+router.post("/", (req, res) => {
+    let newChef = {
+        name: req.body.name,
+        img: req.body.chefImg,
+        email: req.body.email,
+        location: req.body.location,
+        bio: req.body.bio,
+        foodImg1: req.body.img1,
+        foodImg2: req.body.img2,
+        foodImg3: req.body.img3,
+    }
+
+    db.addChef(newChef).then(chef => {
+        console.log(chef)
+        let chefCuisine = {
+            chef_id: chef[0],
+            cuisine_id: req.body.cuisine
+        }
+        db.addChefCuisine(chefCuisine).then(() => res.redirect('/'))
+    })
+})
 
 module.exports = router
