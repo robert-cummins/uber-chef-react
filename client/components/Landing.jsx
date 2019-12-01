@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 
-class Navbar extends React.Component {
+class Landing extends React.Component {
     constructor() {
         super()
         this.state = {
@@ -11,9 +11,6 @@ class Navbar extends React.Component {
 
     handleChange = e => {
         this.setState({ location: e.target.value })
-    }
-    handleSubmit = e => {
-        e.target.action = this.state.location
     }
 
     render() {
@@ -37,4 +34,4 @@ class Navbar extends React.Component {
     }
 }
 
-export default Navbar
+export default Landing

@@ -5,8 +5,12 @@ import {Link} from 'react-router-dom'
 
 class Chefs extends React.Component {
     componentDidMount() {
-        this.props.dispatch(fetchChefs(this.props.match.params.location))
-        console.log(this.props.chefs)
+        if(this.props.location.search == ''){
+            this.props.dispatch(fetchChefs(this.props.match.params.location))
+        } else{
+            this.props.dispatch(fetchChefs(this.props.match.params.location, this.props.location.search))
+        }
+        
     }
 
     render() {
