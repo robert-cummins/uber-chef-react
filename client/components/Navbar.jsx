@@ -54,7 +54,7 @@ class Navbar extends React.Component {
                             <Link to={'/sign-up'}><button id="sign-in" className="btn btn-outline-success my-2 my-sm-0 submit cuisine-submit" type="button">Sign Up</button></Link>
                         </li>
                         <li className="nav-item active">
-                            <a href="/login"><button id="sign-in" className="btn btn-outline-success my-2 my-sm-0 submit cuisine-submit" type="button">Log-in</button></a>
+                            <Link to="/log-in"><button id="sign-in" className="btn btn-outline-success my-2 my-sm-0 submit cuisine-submit" type="button">Log-in</button></Link>
                         </li>
                     </div>
 

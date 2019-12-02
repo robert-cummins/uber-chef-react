@@ -1,5 +1,5 @@
 import React from 'react'
-import {postChef, fetchChefs} from '../actions/index'
+import {postChef} from '../actions/index'
 import { connect } from 'react-redux'
 
 class SignUp extends React.Component {
