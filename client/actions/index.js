@@ -1,6 +1,7 @@
-import { getchefsByLocationAndCuisine } from '../api/chefs'
+import { getchefsByLocationAndCuisine, addNewChef } from '../api/chefs'
 
 export const GET_CHEFS = 'GET_CHEFS'
+export const ADD_CHEF = 'ADD_CHEF'
 
 export const getChefs = (chefs) => {
     return {
@@ -9,13 +10,26 @@ export const getChefs = (chefs) => {
     }
 }
 
+export const addChef = (chef) => {
+    return {
+        type: ADD_CHEF,
+        name: chef.name,
+        img: chef.chefImg,
+        email: chef.email,
+        location: chef.location,
+        bio: chef.bio,
+        cuisine: chef.cuisine,
+        foodImg1: chef.foodImg1,
+        foodImg2: chef.foodImg2,
+        foodImg3: chef.foodImg3,
+    }
+}
+
 export function fetchChefs(location, cuisine) {
     if(cuisine){
-        console.log(cuisine)
         return dispatch => {
             getchefsByLocationAndCuisine(location, cuisine)
             .then(res => {
-                console.log(res.body)
                 dispatch(getChefs(res.body))
             })
         }
@@ -28,5 +42,24 @@ export function fetchChefs(location, cuisine) {
                     dispatch(getChefs(res.body))
                 })
         }
+    }
+}
+
+export function postChef(chef){
+    return dispatch => {
+        addNewChef(chef)
+        .then(() => {
+            dispatch(addChef(chef))
+    
+        })
+        .then(() => {
+            return dispatch => {
+                getchefsByLocationAndCuisine(chef.location)
+                    .then(res => {
+                        dispatch(getChefs(res.body))
+                    })
+            }
+        })
+        .catch(() => {})
     }
 }

@@ -1,13 +1,28 @@
-import {GET_CHEFS} from '../actions/index'
+import {GET_CHEFS, ADD_CHEF} from '../actions/index'
 
-function getChefs(state = [], action){
+function chefReducer(state = [], action){
     switch(action.type){
         case GET_CHEFS:
             return action.chefs
+
+        case ADD_CHEF:
+            return [...state, 
+                {
+                    name: action.name,
+                    img: action.img,
+                    email: action.email,
+                    location: action.location,
+                    bio: action.bio,
+                    specialty: action.specialty,
+                    foodImg1: action.foodImg1,
+                    foodImg2: action.foodImg2,
+                    foodImg3: action.foodImg3,
+                }
+            ]
 
         default:
             return state
     }
 }
 
-export default getChefs
+export default chefReducer

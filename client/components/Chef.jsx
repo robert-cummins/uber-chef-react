@@ -5,7 +5,6 @@ import { fetchChefs } from '../actions/index'
 class Chef extends React.Component {
     componentDidMount() {
         this.props.dispatch(fetchChefs(this.props.match.params.location))
-        console.log(this.props)
     }
 
     render() {
@@ -84,7 +83,7 @@ class Chef extends React.Component {
                                
 const mapStateToProps = (state) => {
     return {
-        chefs: state.getChefs
+        chefs: state.chefReducer
     }
                                 
 }

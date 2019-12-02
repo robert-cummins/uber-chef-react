@@ -13,6 +13,10 @@ class Chefs extends React.Component {
         
     }
 
+    componentDidUpdate(){
+        this.props.dispatch(fetchChefs(this.props.match.params.location))
+    }
+
     render() {
         return (
             <div class="row chef-container">
@@ -34,7 +38,7 @@ class Chefs extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        chefs: state.getChefs
+        chefs: state.chefReducer
     }
 
 }
