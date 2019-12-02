@@ -1,6 +1,6 @@
-import getChefs from './chef'
+import chefReducer from './chef'
 import { combineReducers } from 'redux';
 
 export default combineReducers({
-    getChefs
+    chefReducer
 })

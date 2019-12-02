@@ -51,7 +51,7 @@ class Navbar extends React.Component {
                             <a href="/"><button className="btn btn-outline-success my-2 my-sm-0 submit cuisine-submit" type="button">Home</button></a>
                         </li>
                         <li className="nav-item active">
-                            <a href="/sign-up"><button id="sign-in" className="btn btn-outline-success my-2 my-sm-0 submit cuisine-submit" type="button">Sign Up</button></a>
+                            <Link to={'/sign-up'}><button id="sign-in" className="btn btn-outline-success my-2 my-sm-0 submit cuisine-submit" type="button">Sign Up</button></Link>
                         </li>
                         <li className="nav-item active">
                             <a href="/login"><button id="sign-in" className="btn btn-outline-success my-2 my-sm-0 submit cuisine-submit" type="button">Log-in</button></a>
@@ -70,7 +70,7 @@ class Navbar extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        chefs: state.getChefs
+        chefs: state.chefReducer
     }
 
 }

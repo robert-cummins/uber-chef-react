@@ -19,7 +19,7 @@ router.get('/:id', (req, res) => {
     }
 })
 
-router.post("/", (req, res) => {
+router.post("/sign-up", (req, res) => {
     let newChef = {
         name: req.body.name,
         img: req.body.chefImg,
@@ -30,14 +30,15 @@ router.post("/", (req, res) => {
         foodImg2: req.body.img2,
         foodImg3: req.body.img3,
     }
-
     db.addChef(newChef).then(chef => {
-        console.log(chef)
         let chefCuisine = {
             chef_id: chef[0],
             cuisine_id: req.body.cuisine
         }
-        db.addChefCuisine(chefCuisine).then(() => res.redirect('/'))
+        db.addChefCuisine(chefCuisine)
+        .then(()=> {
+            res.json({})
+        })
     })
 })
 

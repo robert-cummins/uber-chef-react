@@ -24,8 +24,13 @@ function addChef(chef, db=database){
     return db('chefs').insert(chef)
 }
 
+function addChefCuisine(chefCuisine, db=database){
+    return db('chefCuisine').insert(chefCuisine)
+}
+
 module.exports = {
     getChefsByCuisineAndLocation,
     getChefsByLocation,
-    addChef
+    addChef,
+    addChefCuisine
 }
