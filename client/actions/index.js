@@ -22,10 +22,12 @@ export const addChef = (chef) => {
         foodImg1: chef.foodImg1,
         foodImg2: chef.foodImg2,
         foodImg3: chef.foodImg3,
+        password: chef.password
     }
 }
 
 export function fetchChefs(location, cuisine) {
+    console.log(location)
     if(cuisine){
         return dispatch => {
             getchefsByLocationAndCuisine(location, cuisine)
@@ -46,6 +48,7 @@ export function fetchChefs(location, cuisine) {
 }
 
 export function postChef(chef){
+    console.log(chef)
     return dispatch => {
         addNewChef(chef)
         .then(() => {

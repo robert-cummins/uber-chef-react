@@ -1,6 +1,7 @@
 import React from 'react'
 import {postChef} from '../actions/index'
 import { connect } from 'react-redux'
+import { register, isAuthenticated } from 'authenticare/client'
 
 class SignUp extends React.Component {
   constructor() {
@@ -15,18 +16,43 @@ class SignUp extends React.Component {
         foodImg1: 'Img1',
         foodImg2: 'Img2',
         foodImg3: 'Img3',
+        password: null
       }
   }
 
   handleChange = (e) => {
     this.setState({[e.target.name]: e.target.value})
+    console.log(this.state)
   }
 
   handleSubmit = (e) => {
+      console.log(process.env)
     e.preventDefault()
-    this.props.dispatch(postChef(this.state))
-    this.props.history.push('/' + this.state.location)
-  } 
+    register({
+      username: this.state.email,
+      password: this.state.password
+    }, {
+      baseUrl: process.env.BASE_API_URL // see .env and webpack.config.js
+    })
+      .then((token) => {
+        if (isAuthenticated()) {
+            this.props.dispatch(postChef(this.state))
+            this.props.history.push('/' + this.state.location)
+            props.history.push('/')
+        }
+      })
+  }
+  
+  
+  
+//   handleSubmit = (e) => {
+//     e.preventDefault()
+//     register({
+
+//     })
+//     this.props.dispatch(postChef(this.state))
+//     this.props.history.push('/' + this.state.location)
+//   } 
   
   render() {
       return (
@@ -77,8 +103,11 @@ class SignUp extends React.Component {
                 <input onChange={this.handleChange} name="foodImg2" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Img2"/>
                 <input onChange={this.handleChange} name="foodImg3" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Img3"/>
             </div>
-            <button onClick={this.handleSubmit} type="submit" class="btn btn-primary submitnpm run debug
-            ">Submit</button>
+            <div class='form-group'>
+                <label htmlFor="exampleFormControlInput1">Password</label>
+                <input onChange={this.handleChange} type="password" name="password" placeholder="Password"></input>
+            </div>
+            <button onClick={this.handleSubmit} type="submit" class="btn btn-primary submitnpm run debug">Submit</button>
         </form>
     </div>
       )

@@ -10,6 +10,7 @@ exports.up = function(knex) {
       table.string('foodImg1')
       table.string('foodImg2')
       table.string('foodImg3')
+      table.binary('password')
   })
 };
 

@@ -13,9 +13,9 @@ class Chefs extends React.Component {
         
     }
 
-    componentDidUpdate(){
-        this.props.dispatch(fetchChefs(this.props.match.params.location))
-    }
+    // componentDidUpdate(){
+    //     this.props.dispatch(fetchChefs(this.props.match.params.location))
+    // }
 
     render() {
         return (

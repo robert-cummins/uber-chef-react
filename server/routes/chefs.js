@@ -29,6 +29,7 @@ router.post("/sign-up", (req, res) => {
         foodImg1: req.body.img1,
         foodImg2: req.body.img2,
         foodImg3: req.body.img3,
+        password: req.body.password
     }
     db.addChef(newChef).then(chef => {
         let chefCuisine = {
@@ -39,6 +40,10 @@ router.post("/sign-up", (req, res) => {
         .then(()=> {
             res.json({})
         })
+
+    }).catch(err =>{
+        res.json({err: 'User already exists'})
+        console.log(err)
     })
 })
 

@@ -15,7 +15,7 @@ class SignUp extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    this.props.dispatch(postChef(this.state))
+    // this.props.dispatch(postChef(this.state))
     this.props.history.push('/' + this.state.location)
   } 
   

@@ -17,6 +17,7 @@ function chefReducer(state = [], action){
                     foodImg1: action.foodImg1,
                     foodImg2: action.foodImg2,
                     foodImg3: action.foodImg3,
+                    password: action.password
                 }
             ]
 

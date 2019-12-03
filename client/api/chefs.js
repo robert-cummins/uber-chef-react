@@ -1,6 +1,7 @@
 import request from 'superagent'
 
 export function getchefsByLocationAndCuisine(location, cuisine){
+    console.log(location, cuisine)
     if(cuisine) return  request.get('/api/v1/chefs/'+ location + '?' + cuisine)
     if(location) return request.get('/api/v1/chefs/'+ location)
 }
@@ -8,4 +9,5 @@ export function getchefsByLocationAndCuisine(location, cuisine){
 export function addNewChef(chef){
     return request.post('/api/v1/chefs/sign-up')
     .send(chef)
+    .catch(err => console.log(err))
 }
