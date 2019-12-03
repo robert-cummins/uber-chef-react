@@ -39,7 +39,7 @@ function addChefCuisine(chefCuisine, db=database){
     return db('chefCuisine').insert(chefCuisine)
 }
 
-function userExists (email, db = connection) {
+function userExists (email, db = database) {
     return db('chefs')
       .count('chef_id as n')
       .where('email', email)
@@ -60,5 +60,6 @@ module.exports = {
     getChefsByLocation,
     addChef,
     addChefCuisine,
-    getUserByEmail
+    getUserByEmail,
+    userExists
 }

@@ -19,13 +19,13 @@ class Chefs extends React.Component {
 
     render() {
         return (
-            <div class="row chef-container">
+            <div className="row chef-container">
                 {this.props.chefs.map(chef => {
                     return(
-                    < div class = "col-3" >
-                        <Link to={`${chef.location}/${chef.chef_id}`}><img class="chef-img" src={chef.img} alt="name"></img></Link>
-                        <p class="chef-name">{chef.name}</p>
-                        <p class="cuisine-text">{chef.cuisine}</p>
+                    < div className = "col-3" >
+                        <Link to={`${chef.location}/${chef.chef_id}`}><img className="chef-img" src={chef.img} alt="name"></img></Link>
+                        <p className="chef-name">{chef.name}</p>
+                        <p className="cuisine-text">{chef.cuisine}</p>
                     </div>
                     )
                 })

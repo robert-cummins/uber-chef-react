@@ -9,7 +9,7 @@ class SignUp extends React.Component {
       this.state = {
         name: 'name',
         chefImg: 'https://apsec.iafor.org/wp-content/uploads/sites/37/2017/02/IAFOR-Blank-Avatar-Image.jpg',
-        email: 'name@example.com',
+        username: 'name@example.com',
         location: 'Wellington',
         bio: 'Write a short Bio',
         cuisine: 201,
@@ -22,20 +22,17 @@ class SignUp extends React.Component {
 
   handleChange = (e) => {
     this.setState({[e.target.name]: e.target.value})
-    console.log(this.state)
   }
 
   handleSubmit = (e) => {
-      console.log(process.env)
     e.preventDefault()
-    register({
-      username: this.state.email,
-      password: this.state.password
-    }, {
-      baseUrl: process.env.BASE_API_URL // see .env and webpack.config.js
+    register(this.state,{
+      baseUrl: process.env.BASE_API_URL  
     })
       .then((token) => {
+        console.log('hello')
         if (isAuthenticated()) {
+          console.log('hello')
             this.props.dispatch(postChef(this.state))
             this.props.history.push('/' + this.state.location)
             props.history.push('/')
@@ -44,15 +41,7 @@ class SignUp extends React.Component {
   }
   
   
-  
-//   handleSubmit = (e) => {
-//     e.preventDefault()
-//     register({
 
-//     })
-//     this.props.dispatch(postChef(this.state))
-//     this.props.history.push('/' + this.state.location)
-//   } 
   
   render() {
       return (
