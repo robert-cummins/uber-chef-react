@@ -22,9 +22,11 @@ class SignUp extends React.Component {
 
   handleChange = (e) => {
     this.setState({[e.target.name]: e.target.value})
+    
   }
 
   handleSubmit = (e) => {
+    console.log(process.env.BASE_API_URL)
     e.preventDefault()
     register(this.state,{
       baseUrl: process.env.BASE_API_URL  
@@ -57,7 +59,7 @@ class SignUp extends React.Component {
             </div>
             <div class="form-group">
                 <label htmlFor="exampleFormControlInput1">Email address</label>
-                <input onChange={this.handleChange} name="email" type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"/>
+                <input onChange={this.handleChange} name="username" type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"/>
             </div>
             <div class="form-group">
                 <label htmlFor="exampleFormControlSelect1">Location</label>

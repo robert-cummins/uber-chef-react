@@ -3,6 +3,8 @@ const express = require('express')
 const { applyAuthRoutes } = require('authenticare/server')
 const router = express.Router()
 const db = require('../db/chefs')
+const { getTokenDecoder } = require('authenticare/server')
+const decodeToken = getTokenDecoder(false)
 
 const {
   userExists,
@@ -17,7 +19,8 @@ const {
   })
 
 
-  router.post("/register", (req, res) => {
+  router.post("/register", decodeToken, async (req, res) => {
+    console.log(req)
     let newChef = {
         name: req.body.name,
         img: req.body.chefImg,
@@ -29,21 +32,22 @@ const {
         foodImg3: req.body.img3,
         password: req.body.password
     }
+    try {
+       db.addChef(newChef).then(chef => {
+            let chefCuisine = {
+                chef_id: chef[0],
+                cuisine_id: req.body.cuisine
+            }
+            db.addChefCuisine(chefCuisine)
+            .then(()=> {
+                res.json({})
+            })
     
-    db.addChef(newChef).then(chef => {
-        let chefCuisine = {
-            chef_id: chef[0],
-            cuisine_id: req.body.cuisine
-        }
-        db.addChefCuisine(chefCuisine)
-        .then(()=> {
-            res.json({})
         })
-
-    }).catch(err =>{
-        res.json({err: 'User already exists'})
-        console.log(err)
-    })
+    } catch (err){
+        res.status(500).send(err.message)
+    }
+    
 })
   
   module.exports = router
