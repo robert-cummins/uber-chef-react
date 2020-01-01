@@ -26,6 +26,8 @@ export const addChef = (chef) => {
 }
 
 export function fetchChefs(location, cuisine) {
+    // console.log(cuisine)
+    // console.log(location)
     if(cuisine){
         return dispatch => {
             getchefsByLocationAndCuisine(location, cuisine)
