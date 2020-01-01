@@ -13,7 +13,7 @@ class Chefs extends React.Component {
         
     }
 
-    componentDidUpdate(){
+    componentDidMount(){
         this.props.dispatch(fetchChefs(this.props.match.params.location))
     }
 
