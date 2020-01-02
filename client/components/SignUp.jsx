@@ -30,36 +30,36 @@ class SignUp extends React.Component {
   
   render() {
       return (
-        <div class="container">
-        <form class="sign-up-form" action="/" method="POST">
-            <div class="form-group">
+        <div className="container">
+        <form className="sign-up-form" action="/" method="POST">
+            <div className="form-group">
                 <label htmlFor="exampleFormControlInput1">Full Name</label>
-                <input onChange={this.handleChange} name="name" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Name"/>
+                <input onChange={this.handleChange} name="name" type="text" className="form-control" id="exampleFormControlInput1" placeholder="Name"/>
             </div>
-            <div class="form-group">
+            <div className="form-group">
                 <label htmlFor="exampleFormControlInput1">Profile Picture</label>
-                <input onChange={this.handleChange} name="chefImg" type="text" class="form-control" id="exampleFormControlInput1" placeholder="img"/>
+                <input onChange={this.handleChange} name="chefImg" type="text" className="form-control" id="exampleFormControlInput1" placeholder="img"/>
             </div>
-            <div class="form-group">
+            <div className="form-group">
                 <label htmlFor="exampleFormControlInput1">Email address</label>
-                <input onChange={this.handleChange} name="email" type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"/>
+                <input onChange={this.handleChange} name="email" type="email" className="form-control" id="exampleFormControlInput1" placeholder="name@example.com"/>
             </div>
-            <div class="form-group">
+            <div className="form-group">
                 <label htmlFor="exampleFormControlSelect1">Location</label>
-                <select onChange={this.handleChange} name="location" class="form-control" id="exampleFormControlSelect1">
+                <select onChange={this.handleChange} name="location" className="form-control" id="exampleFormControlSelect1">
                     <option value="Wellington">Wellington</option>
                     <option value="Christchurch">Christchurch</option>
                     <option value="Auckland">Auckland</option>
                     <option value="Hamilton">Hamilton</option>
                 </select>
             </div>
-            <div class="form-group">
+            <div className="form-group">
                 <label htmlFor="exampleFormControlTextarea1">Write a Short Bio</label>
-                <textarea onChange={this.handleChange} name="bio" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <textarea onChange={this.handleChange} name="bio" className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
-            <div class="form-group">
+            <div className="form-group">
                 <label htmlFor="exampleFormControlSelect1">Choose Your speciality</label>
-                <select onChange={this.handleChange} name="cuisine" class="form-control" id="exampleFormControlSelect1">
+                <select onChange={this.handleChange} name="cuisine" className="form-control" id="exampleFormControlSelect1">
                     <option value={201}>Mexican</option>
                     <option value={202}>Italian</option>
                     <option value={203}>French</option>
@@ -71,13 +71,13 @@ class SignUp extends React.Component {
                     <option value={210}>Greek</option>
                 </select>
             </div>
-            <div class="form-group">
+            <div className="form-group">
                 <label htmlFor="exampleFormControlInput1">Provide 3 Example Images Of Your Food</label>
-                <input onChange={this.handleChange} name="foodImg1" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Img1"/>
-                <input onChange={this.handleChange} name="foodImg2" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Img2"/>
-                <input onChange={this.handleChange} name="foodImg3" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Img3"/>
+                <input onChange={this.handleChange} name="foodImg1" type="text" className="form-control" id="exampleFormControlInput1" placeholder="Img1"/>
+                <input onChange={this.handleChange} name="foodImg2" type="text" className="form-control" id="exampleFormControlInput1" placeholder="Img2"/>
+                <input onChange={this.handleChange} name="foodImg3" type="text" className="form-control" id="exampleFormControlInput1" placeholder="Img3"/>
             </div>
-            <button onClick={this.handleSubmit} type="submit" class="btn btn-primary submitnpm run debug
+            <button onClick={this.handleSubmit} type="submit" className="btn btn-primary submitnpm run debug
             ">Submit</button>
         </form>
     </div>
