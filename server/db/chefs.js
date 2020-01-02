@@ -1,8 +1,6 @@
-const environment = process.env.NODE_ENV || "development";
-const config = require("../../knexfile")[environment];
-const database = require("knex")(config);
+const connection = require('./connection')
 
-function getChefsByCuisineAndLocation(cuisineId, location, db = database) {
+function getChefsByCuisineAndLocation(cuisineId, location, db = connection) {
     const baseQuery = db('cuisine')
         .leftJoin('chefCuisine', 'chefCuisine.cuisine_id', 'cuisine.cuisine_id')
         .leftJoin('chefs', "chefCuisine.chef_id", 'chefs.chef_id')
@@ -14,19 +12,20 @@ function getChefsByCuisineAndLocation(cuisineId, location, db = database) {
 }
 
 
-function getChefsByLocation(location, db = database){
+function getChefsByLocation(location, db = connection){
     return db('chefs')
     .where('location', location)
     .select()
 }
 
-function addChef(chef, db=database){
+function addChef(chef, db=connection){
     return db('chefs').insert(chef)
 }
 
-function addChefCuisine(chefCuisine, db=database){
+function addChefCuisine(chefCuisine, db=connection){
     return db('chefCuisine').insert(chefCuisine)
 }
+
 
 module.exports = {
     getChefsByCuisineAndLocation,
