@@ -21,17 +21,17 @@ class SignUp extends React.Component {
   
   render() {
       return (
-        <div class="container">
-        <form class="sign-up-form" action="/" method="POST">
-            <div class="form-group">
+        <div className="container">
+        <form className="sign-up-form" action="/" method="POST">
+            <div className="form-group">
                 <label htmlFor="exampleFormControlInput1">User Name</label>
-                <input onChange={this.handleChange} name="user-name" type="text" class="form-control" id="exampleFormControlInput1" placeholder="User Name"/>
+                <input onChange={this.handleChange} name="user-name" type="text" className="form-control" id="exampleFormControlInput1" placeholder="User Name"/>
             </div>
-            <div class="form-group">
+            <div className="form-group">
                 <label htmlFor="exampleFormControlInput1">Password</label>
-                <input onChange={this.handleChange} name="password" type="password" class="form-control" id="exampleFormControlInput1" placeholder="Password"/>
+                <input onChange={this.handleChange} name="password" type="password" className="form-control" id="exampleFormControlInput1" placeholder="Password"/>
             </div>
-            <button onClick={this.handleSubmit} type="submit" class="btn btn-primary submitnpm run debug
+            <button onClick={this.handleSubmit} type="submit" className="btn btn-primary submitnpm run debug
             ">Login</button>
         </form>
     </div>

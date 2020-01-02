@@ -10,60 +10,60 @@ class Chef extends React.Component {
     render() {
         return (
             <>
-                {this.props.chefs.map(chef => {
+                {this.props.chefs.map((chef, i) => {
                     if (chef.chef_id == this.props.match.params.id) {
                         return (
-                            <div class="row text-center">
-                                <div class="col-sm-4 chef-button">
-                                    <div class="text-center">
-                                        <img class="chef-page-img" src={chef.img} alt={chef.name}/>
+                            <div key={i+100} className="row text-center">
+                                <div className="col-sm-4 chef-button">
+                                    <div className="text-center">
+                                        <img className="chef-page-img" src={chef.img} alt={chef.name}/>
 
-                                            <div class="chef-button">
+                                            <div className="chef-button">
                                                 <form action="/delete-chef/{{chef.chef_id}}" method="POST">
-                                                    <button id="delete" class="btn btn-danger chef-button ">Delete Profile</button>
+                                                    <button id="delete" className="btn btn-danger chef-button ">Delete Profile</button>
                                                 </form>
                                                 <a href="/update-chef/{{chef.chef_id}}"><button id='update'
-                                                class="btn btn-outline-success my-2 my-sm-0 submit" type="button">Update Profile</button></a>
+                                                className="btn btn-outline-success my-2 my-sm-0 submit" type="button">Update Profile</button></a>
                                             </div>
                                     </div>
                                     </div>
-                                    <div class="col-sm-8">
-                                        <h1 class="ind-chef">{chef.name}</h1>
-                                        <div class="container">
+                                    <div className="col-sm-8">
+                                        <h1 className="ind-chef">{chef.name}</h1>
+                                        <div className="container">
                                             <h2>Info:</h2>
                                             <p>{chef.bio}</p>
                                             <p><strong>Email:</strong>{chef.email}</p>
-                                            <div class="row">
-                                                <div class="col-sm-3">
+                                            <div className="row">
+                                                <div className="col-sm-3">
 
                                                 </div>
-                                                <div class="col-sm-9">
-                                                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel"
+                                                <div className="col-sm-9">
+                                                    <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel"
                                                         style={{width: '60%', marginTop: '20px'}}>
-                                                        <ol class="carousel-indicators">
-                                                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                                        <ol className="carousel-indicators">
+                                                            <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
                                                             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                                                             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                                                         </ol>
-                                                        <div class="carousel-inner">
-                                                            <div class="carousel-item active">
-                                                                <img class="d-block w-100 food-img" src={chef.foodImg1} alt="First slide"/>
+                                                        <div className="carousel-inner">
+                                                            <div className="carousel-item active">
+                                                                <img className="d-block w-100 food-img" src={chef.foodImg1} alt="First slide"/>
                                                             </div>
-                                                            <div class="carousel-item">
-                                                                <img class="d-block w-100 food-img" src={chef.foodImg2} alt="First slide"/>
+                                                            <div className="carousel-item">
+                                                                <img className="d-block w-100 food-img" src={chef.foodImg2} alt="First slide"/>
                                                             </div>
-                                                            <div class="carousel-item">
-                                                                <img class="d-block w-100 food-img" src={chef.foodImg3} alt="First slide"/>
+                                                            <div className="carousel-item">
+                                                                <img className="d-block w-100 food-img" src={chef.foodImg3} alt="First slide"/>
                                                             </div>
                                                         </div>
-                                                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                        <span class="sr-only">Previous</span>
+                                                        <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                                        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                        <span className="sr-only">Previous</span>
                                                         </a>
-                                                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
+                                                        <a className="carousel-control-next" href="#carouselExampleIndicators" role="button"
                                                         data-slide="next">
-                                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                        <span class="sr-only">Next</span>
+                                                        <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                                                        <span className="sr-only">Next</span>
                                                         </a>
                                                     </div>
                                                 </div>
