@@ -7,12 +7,12 @@ router.post('/login', token.issue)
 router.post('/register', register, token.issue)
 
 function register (req, res, next) {
-    const { email, password} = req.body
+    const { email, name, password} = req.body
     userExists(email)
       .then(exists => {
         if (exists) return res.status(400).send({ message: "Email In Use" })
   
-        createUser(email, password)
+        createUser(email, name, password)
           .then(() => next())
           .catch(err => {
             console.log(err)
