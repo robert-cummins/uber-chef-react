@@ -7,14 +7,9 @@ class SignUp extends React.Component {
       super()
       this.state = {
         name: 'name',
-        chefImg: 'https://apsec.iafor.org/wp-content/uploads/sites/37/2017/02/IAFOR-Blank-Avatar-Image.jpg',
+        password: 'password',
         email: 'name@example.com',
-        location: 'Wellington',
-        bio: 'Write a short Bio',
-        cuisine: 201,
-        foodImg1: 'Img1',
-        foodImg2: 'Img2',
-        foodImg3: 'Img3',
+        
       }
   }
 
