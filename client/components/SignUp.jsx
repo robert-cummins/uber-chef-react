@@ -7,9 +7,15 @@ class SignUp extends React.Component {
       super()
       this.state = {
         name: 'name',
-        password: 'password',
+        chefImg: 'https://apsec.iafor.org/wp-content/uploads/sites/37/2017/02/IAFOR-Blank-Avatar-Image.jpg',
         email: 'name@example.com',
-        
+        password: 'password',
+        location: 'Wellington',
+        bio: 'Write a short Bio',
+        cuisine: 201,
+        foodImg1: 'Img1',
+        foodImg2: 'Img2',
+        foodImg3: 'Img3',
       }
   }
 
@@ -71,6 +77,10 @@ class SignUp extends React.Component {
                 <input onChange={this.handleChange} name="foodImg1" type="text" className="form-control" id="exampleFormControlInput1" placeholder="Img1"/>
                 <input onChange={this.handleChange} name="foodImg2" type="text" className="form-control" id="exampleFormControlInput1" placeholder="Img2"/>
                 <input onChange={this.handleChange} name="foodImg3" type="text" className="form-control" id="exampleFormControlInput1" placeholder="Img3"/>
+            </div>
+            <div className="form-group">
+                <label htmlFor="exampleFormControlInput1">Password</label>
+                <input onChange={this.handleChange} name="password" type="text" className="form-control" id="exampleFormControlInput1" placeholder="password"/>
             </div>
             <button onClick={this.handleSubmit} type="submit" className="btn btn-primary submitnpm run debug
             ">Submit</button>
