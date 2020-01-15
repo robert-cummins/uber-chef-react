@@ -1,5 +1,6 @@
 import React from 'react'
-import {postChef} from '../actions/index'
+// import {postChef} from '../actions/index'
+import { registerUserRequest } from '../actions/signUp'
 import { connect } from 'react-redux'
 import { loginError } from '../actions/login'
 
@@ -30,7 +31,7 @@ class SignUp extends React.Component {
     e.preventDefault()
     if (this.state.confirm_password != this.state.password) return this.props.dispatch(loginError("Passwords don't match"))
 
-    this.props.dispatch(postChef(this.state))
+    this.props.dispatch(registerUserRequest(this.state))
     this.props.history.push('/' + this.state.location)
   } 
   

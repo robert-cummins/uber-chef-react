@@ -8,10 +8,37 @@ export function registerUserRequest (creds) {
         .then(token => {
           const userInfo = saveUserToken(token)
           dispatch(receiveLogin(userInfo))
-          document.location = '/#/'
+        //   document.location = '/#/'
+        })
+        .then(() => {
+            return dispatch => {
+                getchefsByLocationAndCuisine(chef.location)
+                    .then(res => {
+                        dispatch(getChefs(res.body))
+                    })
+            }
         })
         .catch(err => {
           dispatch(loginError(err.response.body.message))
         })
     }
   }
+
+  export function postChef(chef){
+    return dispatch => {
+        addNewChef(chef)
+        .then(() => {
+            dispatch(addChef(chef))
+    
+        })
+        .then(() => {
+            return dispatch => {
+                getchefsByLocationAndCuisine(chef.location)
+                    .then(res => {
+                        dispatch(getChefs(res.body))
+                    })
+            }
+        })
+        .catch(() => {})
+    }
+}
