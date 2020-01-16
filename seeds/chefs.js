@@ -32,6 +32,7 @@ exports.seed = function(knex) {
   const usersNum = 100
   for(let i = 0; i < usersNum; i++){
     users.push(createFakeUser())
+    console.log(users)
     
   }
   return knex('chefs').del()

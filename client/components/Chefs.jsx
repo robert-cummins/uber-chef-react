@@ -23,7 +23,7 @@ class Chefs extends React.Component {
                 {this.props.chefs.map((chef, i) => {
                     return(
                     < div key={i} className = "col-3" >
-                        <Link to={`${chef.location}/${chef.chef_id}`}><img className="chef-img" src={chef.img} alt="name"></img></Link>
+                        <Link to={`${chef.location}/${chef.chef_id}`}><img className="chef-img" src={chef.chefImg} alt="name"></img></Link>
                         <p className="chef-name">{chef.name}</p>
                         <p className="cuisine-text">{chef.cuisine}</p>
                     </div>
