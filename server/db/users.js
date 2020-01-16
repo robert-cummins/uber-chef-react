@@ -15,7 +15,6 @@ function createUser (chef) {
       password: hash,
       location: chef.location,
       bio: chef.bio,
-      cuisine: chef.cuisine,
       foodImg1: chef.foodImg1,
       foodImg2: chef.foodImg2,
       foodImg3: chef.foodImg3 
