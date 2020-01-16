@@ -8,8 +8,21 @@ function createUser (chef) {
   console.log(chef)
   return generatePasswordHash(chef.password)
     .then(hash => {
+     let dataChef = { 
+      name: chef.name,
+      chefImg: chef.chefImg,
+      email: chef.email,
+      password: hash,
+      location: chef.location,
+      bio: chef.bio,
+      cuisine: chef.cuisine,
+      foodImg1: chef.foodImg1,
+      foodImg2: chef.foodImg2,
+      foodImg3: chef.foodImg3 
+    }
+
       console.log(hash)
-      return db('chefs').insert(chef, "chef_id")
+      return db('chefs').insert(dataChef, "chef_id")
     })
 }
 

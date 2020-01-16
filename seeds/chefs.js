@@ -8,7 +8,7 @@ const food = ['dinner', 'food', 'cake', 'lunch', 'brunch', 'breakfast', 'dessert
 const createFakeUser = () =>({
   name: faker.name.findName(),
   location: faker.random.arrayElement(cities),
-  img: 'https://source.unsplash.com/800x450/?' + getArrayItem(),
+  chefImg: 'https://source.unsplash.com/800x450/?' + getArrayItem(),
   email: faker.internet.email(),
   bio: faker.lorem.paragraphs(),
   foodImg1: 'https://source.unsplash.com/800x450/?' + getFoodArrayItem(),
