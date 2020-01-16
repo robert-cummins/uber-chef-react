@@ -1,6 +1,8 @@
 import React from 'react'
-import {postChef} from '../actions/index'
+// import {postChef} from '../actions/index'
+import { registerUserRequest } from '../actions/signUp'
 import { connect } from 'react-redux'
+import { loginError } from '../actions/login'
 
 class SignUp extends React.Component {
   constructor() {
@@ -9,6 +11,8 @@ class SignUp extends React.Component {
         name: 'name',
         chefImg: 'https://apsec.iafor.org/wp-content/uploads/sites/37/2017/02/IAFOR-Blank-Avatar-Image.jpg',
         email: 'name@example.com',
+        password: 'password',
+        confirm_password: 'confirm password',
         location: 'Wellington',
         bio: 'Write a short Bio',
         cuisine: 201,
@@ -19,12 +23,15 @@ class SignUp extends React.Component {
   }
 
   handleChange = (e) => {
+    console.log(this.state)
     this.setState({[e.target.name]: e.target.value})
   }
 
   handleSubmit = (e) => {
     e.preventDefault()
-    this.props.dispatch(postChef(this.state))
+    if (this.state.confirm_password != this.state.password) return this.props.dispatch(loginError("Passwords don't match"))
+
+    this.props.dispatch(registerUserRequest(this.state))
     this.props.history.push('/' + this.state.location)
   } 
   
@@ -37,16 +44,16 @@ class SignUp extends React.Component {
                 <input onChange={this.handleChange} name="name" type="text" className="form-control" id="exampleFormControlInput1" placeholder="Name"/>
             </div>
             <div className="form-group">
-                <label htmlFor="exampleFormControlInput1">Profile Picture</label>
-                <input onChange={this.handleChange} name="chefImg" type="text" className="form-control" id="exampleFormControlInput1" placeholder="img"/>
+                <label htmlFor="exampleFormControlInput2">Profile Picture</label>
+                <input onChange={this.handleChange} name="chefImg" type="text" className="form-control" id="exampleFormControlInput2" placeholder="img"/>
             </div>
             <div className="form-group">
-                <label htmlFor="exampleFormControlInput1">Email address</label>
-                <input onChange={this.handleChange} name="email" type="email" className="form-control" id="exampleFormControlInput1" placeholder="name@example.com"/>
+                <label htmlFor="exampleFormControlInput3">Email address</label>
+                <input onChange={this.handleChange} name="email" type="email" className="form-control" id="exampleFormControlInput3" placeholder="name@example.com"/>
             </div>
             <div className="form-group">
-                <label htmlFor="exampleFormControlSelect1">Location</label>
-                <select onChange={this.handleChange} name="location" className="form-control" id="exampleFormControlSelect1">
+                <label htmlFor="exampleFormControlSelect4">Location</label>
+                <select onChange={this.handleChange} name="location" className="form-control" id="exampleFormControlSelect4">
                     <option value="Wellington">Wellington</option>
                     <option value="Christchurch">Christchurch</option>
                     <option value="Auckland">Auckland</option>
@@ -54,12 +61,12 @@ class SignUp extends React.Component {
                 </select>
             </div>
             <div className="form-group">
-                <label htmlFor="exampleFormControlTextarea1">Write a Short Bio</label>
-                <textarea onChange={this.handleChange} name="bio" className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <label htmlFor="exampleFormControlTextarea5">Write a Short Bio</label>
+                <textarea onChange={this.handleChange} name="bio" className="form-control" id="exampleFormControlTextarea5" rows="3"></textarea>
             </div>
             <div className="form-group">
-                <label htmlFor="exampleFormControlSelect1">Choose Your speciality</label>
-                <select onChange={this.handleChange} name="cuisine" className="form-control" id="exampleFormControlSelect1">
+                <label htmlFor="exampleFormControlSelect6">Choose Your speciality</label>
+                <select onChange={this.handleChange} name="cuisine" className="form-control" id="exampleFormControlSelect6">
                     <option value={201}>Mexican</option>
                     <option value={202}>Italian</option>
                     <option value={203}>French</option>
@@ -72,11 +79,19 @@ class SignUp extends React.Component {
                 </select>
             </div>
             <div className="form-group">
-                <label htmlFor="exampleFormControlInput1">Provide 3 Example Images Of Your Food</label>
-                <input onChange={this.handleChange} name="foodImg1" type="text" className="form-control" id="exampleFormControlInput1" placeholder="Img1"/>
-                <input onChange={this.handleChange} name="foodImg2" type="text" className="form-control" id="exampleFormControlInput1" placeholder="Img2"/>
-                <input onChange={this.handleChange} name="foodImg3" type="text" className="form-control" id="exampleFormControlInput1" placeholder="Img3"/>
+                <label htmlFor="exampleFormControlInput7">Provide 3 Example Images Of Your Food</label>
+                <input onChange={this.handleChange} name="foodImg1" type="text" className="form-control" id="exampleFormControlInput7" placeholder="Img1"/>
+                <input onChange={this.handleChange} name="foodImg2" type="text" className="form-control" id="exampleFormControlInput8" placeholder="Img2"/>
+                <input onChange={this.handleChange} name="foodImg3" type="text" className="form-control" id="exampleFormControlInput9" placeholder="Img3"/>
             </div>
+            {this.props.auth.errorMessage && <><h1><span className="badge badge-danger badge-lg">{this.props.auth.errorMessage}</span></h1><br></br></>}
+            <div className="form-group">
+                <label htmlFor="exampleFormControlInput10">Password</label>
+                <input onChange={this.handleChange} name="password" type="text" className="form-control" id="exampleFormControlInput10" placeholder="password"/>
+                <label htmlFor="exampleFormControlInput11">Confirm Password</label>
+                <input onChange={this.handleChange} name="confirm_password" type="text" className="form-control" id="exampleFormControlInput11" placeholder="confirm password"/>
+            </div>
+            
             <button onClick={this.handleSubmit} type="submit" className="btn btn-primary submitnpm run debug
             ">Submit</button>
         </form>
@@ -86,11 +101,10 @@ class SignUp extends React.Component {
 }
 
 
-const mapStateToProps = (state) => {
-  return {
-      chefs: state.chefReducer
+const mapStateToProps = ({ auth }) => {
+    return {
+      auth
+    }
   }
-
-}
 
 export default connect(mapStateToProps)(SignUp) 

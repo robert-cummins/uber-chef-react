@@ -47,21 +47,21 @@ export function fetchChefs(location, cuisine) {
     }
 }
 
-export function postChef(chef){
-    return dispatch => {
-        addNewChef(chef)
-        .then(() => {
-            dispatch(addChef(chef))
+// export function postChef(chef){
+//     return dispatch => {
+//         addNewChef(chef)
+//         .then(() => {
+//             dispatch(addChef(chef))
     
-        })
-        .then(() => {
-            return dispatch => {
-                getchefsByLocationAndCuisine(chef.location)
-                    .then(res => {
-                        dispatch(getChefs(res.body))
-                    })
-            }
-        })
-        .catch(() => {})
-    }
-}
+//         })
+//         .then(() => {
+//             return dispatch => {
+//                 getchefsByLocationAndCuisine(chef.location)
+//                     .then(res => {
+//                         dispatch(getChefs(res.body))
+//                     })
+//             }
+//         })
+//         .catch(() => {})
+//     }
+// }

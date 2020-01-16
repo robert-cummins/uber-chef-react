@@ -3,23 +3,36 @@ const database = require('./connection')
 const {generatePasswordHash} = require('../auth/hash')
 
 
-function createUser (email, first_name, last_name, password,testDb) {
-  const db = testDb || database
-
-  return generatePasswordHash(password)
+function createUser (chef) {
+  const db = database
+  console.log(chef)
+  return generatePasswordHash(chef.password)
     .then(hash => {
-      return db('users').insert({email, first_name, last_name, hash}, "user_id")
+     let dataChef = { 
+      name: chef.name,
+      chefImg: chef.chefImg,
+      email: chef.email,
+      password: hash,
+      location: chef.location,
+      bio: chef.bio,
+      foodImg1: chef.foodImg1,
+      foodImg2: chef.foodImg2,
+      foodImg3: chef.foodImg3 
+    }
+
+      console.log(hash)
+      return db('chefs').insert(dataChef, "chef_id")
     })
 }
 
 function getUserByEmail(email, db = database){
-  return db('users').where('email', email).first()
+  return db('chefs').where('email', email).first()
 }
 
 function userExists (email, testDb) {
-  const db = testDb || database
+  const db = database
 
-  return db('users')
+  return db('chefs')
     .where('email', email)
     .then(users => users.length > 0)
 }
