@@ -48,7 +48,7 @@ class Navbar extends React.Component {
                             </>
                         }
                     </form>
-                    <div className="collapse navbar-collapse justify-content-end">
+                    <div className="navbar-nav ml-auto">
                         <li className="nav-item active">
                             <a href="/"><button className="btn btn-outline-success my-2 my-sm-0 submit cuisine-submit" type="button">Home</button></a>
                         </li>
