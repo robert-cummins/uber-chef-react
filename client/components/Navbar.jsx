@@ -51,7 +51,7 @@ class Navbar extends React.Component {
                     <div className="collapse navbar-collapse justify-content-end">
                     {/* {this.props.chefs[0] && */}
                         <li className="nav-item active">
-                            <a href="/"><button className="btn btn-outline-success my-2 my-sm-0 submit cuisine-submit" type="button">Home</button></a>
+                            <Link to={"/"}><button className="btn btn-outline-success my-2 my-sm-0 submit cuisine-submit" type="button">Home</button></Link>
                         </li>
                     // }
                         <li className="nav-item active">
