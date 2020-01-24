@@ -50,7 +50,7 @@ class Navbar extends React.Component {
                     </form>
                     <div className="navbar-nav ml-auto">
                         <li className="nav-item active">
-                            <a href="/"><button className="btn btn-outline-success my-2 my-sm-0 submit cuisine-submit" type="button">Home</button></a>
+                            <Link to={"/"}><button className="btn btn-outline-success my-2 my-sm-0 submit cuisine-submit" type="button">Home</button></Link>
                         </li>
                         <li className="nav-item active">
                             <Link to={'/sign-up'}><button id="sign-in" className="btn btn-outline-success my-2 my-sm-0 submit cuisine-submit" type="button">Sign Up</button></Link>
