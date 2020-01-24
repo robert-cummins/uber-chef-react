@@ -16,7 +16,7 @@ class Chef extends React.Component {
                             <div key={i+100} className="row text-center">
                                 <div className="col-sm-4 chef-button">
                                     <div className="text-center">
-                                        <img className="chef-page-img" src={chef.img} alt={chef.name}/>
+                                        <img className="chef-page-img" src={chef.chefImg} alt={chef.name}/>
 
                                             <div className="chef-button">
                                                 <form action="/delete-chef/{{chef.chef_id}}" method="POST">
