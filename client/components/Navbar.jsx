@@ -49,11 +49,11 @@ class Navbar extends React.Component {
                         }
                     </form>
                     <div className="collapse navbar-collapse justify-content-end">
-                    {/* {this.props.chefs[0] && */}
+                    {this.props.chefs[0] &&
                         <li className="nav-item active">
                             <Link to={"/"}><button className="btn btn-outline-success my-2 my-sm-0 submit cuisine-submit" type="button">Home</button></Link>
                         </li>
-                    // }
+                    }
                         <li className="nav-item active">
                             <Link to={'/sign-up'}><button id="sign-in" className="btn btn-outline-success my-2 my-sm-0 submit cuisine-submit" type="button">Sign Up</button></Link>
                         </li>
