@@ -11,7 +11,8 @@
     "dev:server": "nodemon server",
     "dev:client": "webpack --watch",
     "start": "webpack && node server",
-    "test": "jest --watchAll"
+    "test": "jest --watchAll",
+    "postinstall": "webpack && knex migrate:latest"
   },
   "babel": {
     "presets": [
@@ -48,9 +49,7 @@
     "redux": "^4.0.4",
     "redux-thunk": "^2.3.0",
     "sqlite3": "^4.1.0",
-    "superagent": "^5.2.1"
-  },
-  "devDependencies": {
+    "superagent": "^5.2.1",
     "@babel/core": "^7.4.3",
     "@babel/plugin-proposal-class-properties": "^7.4.0",
     "@babel/plugin-proposal-object-rest-spread": "^7.4.3",
@@ -67,5 +66,8 @@
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0",
     "webpack-dev-server": "^3.2.1"
+  },
+  "devDependencies": {
+    
   }
 }
