@@ -1,7 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { loginUser, loginError } from '../actions/login'
 
-class SignUp extends React.Component {
+class LogIn extends React.Component {
   constructor() {
       super()
       this.state = {
@@ -40,11 +41,10 @@ class SignUp extends React.Component {
 }
 
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({ auth }) => {
   return {
-      chefs: state.chefReducer
+    auth
   }
-
 }
 
-export default connect(mapStateToProps)(SignUp) 
+export default connect(mapStateToProps)(LogIn) 
