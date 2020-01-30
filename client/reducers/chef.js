@@ -11,6 +11,7 @@ function chefReducer(state = [], action){
                     name: action.name,
                     img: action.img,
                     email: action.email,
+                    password: action.password,
                     location: action.location,
                     bio: action.bio,
                     specialty: action.specialty,
