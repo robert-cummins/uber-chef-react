@@ -8,8 +8,8 @@ const chefRoutes = require('./routes/chefs')
 
 server.use(cors('*'))
 server.use(express.json())
-server.use('/api/v1/chefs', chefRoutes)
 server.use('/api/auth', authRoutes)
+server.use('/api/v1/chefs', chefRoutes)
 server.use(express.static(path.join(__dirname, './public')))
 
 module.exports = server

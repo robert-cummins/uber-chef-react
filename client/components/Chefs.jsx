@@ -4,6 +4,9 @@ import { fetchChefs } from '../actions/index'
 import {Link} from 'react-router-dom'
 
 class Chefs extends React.Component {
+    constructor(props){
+        super()
+    }
     componentDidMount() {
         if(this.props.location.search == ''){
             this.props.dispatch(fetchChefs(this.props.match.params.location))
@@ -12,10 +15,8 @@ class Chefs extends React.Component {
         }
         
     }
+    
 
-    componentDidMount(){
-        this.props.dispatch(fetchChefs(this.props.match.params.location))
-    }
 
     render() {
         return (

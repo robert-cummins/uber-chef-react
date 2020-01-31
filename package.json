@@ -10,7 +10,7 @@
     "dev": "run-p dev:server dev:client",
     "dev:server": "nodemon server",
     "dev:client": "webpack --watch",
-    "start": "webpack && node server",
+    "start": "webpack && nodemon server",
     "test": "jest --watchAll",
     "postinstall": "webpack && knex migrate:latest"
   },

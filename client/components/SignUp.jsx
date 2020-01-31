@@ -1,5 +1,5 @@
 import React from 'react'
-// import {postChef} from '../actions/index'
+import { fetchChefs } from '../actions/index'
 import { registerUserRequest } from '../actions/signUp'
 import { connect } from 'react-redux'
 import { loginError } from '../actions/login'
@@ -30,9 +30,9 @@ class SignUp extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault()
     if (this.state.confirm_password != this.state.password) return this.props.dispatch(loginError("Passwords don't match"))
-
     this.props.dispatch(registerUserRequest(this.state))
-    this.props.history.push('/' + this.state.location)
+    this.props.dispatch(fetchChefs(this.state.location))
+    // this.props.history.push('/' + this.state.location)
   } 
   
   render() {
@@ -101,9 +101,10 @@ class SignUp extends React.Component {
 }
 
 
-const mapStateToProps = ({ auth }) => {
+const mapStateToProps = (state) => {
     return {
-      auth
+      auth: state.auth,
+      chefs: state.chefReducer
     }
   }
 

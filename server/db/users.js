@@ -1,11 +1,10 @@
 const database = require('./connection')
-
+const db = require('../db/chefs')
 const {generatePasswordHash} = require('../auth/hash')
 
 
 function createUser (chef) {
   const db = database
-  console.log(chef)
   return generatePasswordHash(chef.password)
     .then(hash => {
      let dataChef = { 
@@ -19,9 +18,14 @@ function createUser (chef) {
       foodImg2: chef.foodImg2,
       foodImg3: chef.foodImg3 
     }
-
-      console.log(hash)
       return db('chefs').insert(dataChef, "chef_id")
+      .then(chefId =>{
+        let chefCuisine = {
+          chef_id: chefId[0],
+          cuisine_id: chef.cuisine
+        }
+        db('chefCuisine').insert(chefCuisine).then(()=>{})
+      })
     })
 }
 

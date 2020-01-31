@@ -6,9 +6,9 @@ export function registerUserRequest (creds) {
     return (dispatch) => {
       register(creds)
         .then(token => {
+          console.log("hello")
           const userInfo = saveUserToken(token)
           dispatch(receiveLogin(userInfo))
-        //   document.location = '/#/'
         })
         .then(() => {
             return dispatch => {
@@ -19,6 +19,7 @@ export function registerUserRequest (creds) {
             }
         })
         .catch(err => {
+          console.log(err)
           dispatch(loginError(err.response.body.message))
         })
     }

@@ -18,18 +18,8 @@ function getChefsByLocation(location, db = connection){
     .select()
 }
 
-function addChef(chef, db=connection){
-    return db('chefs').insert(chef)
-}
-
-function addChefCuisine(chefCuisine, db=connection){
-    return db('chefCuisine').insert(chefCuisine)
-}
-
 
 module.exports = {
     getChefsByCuisineAndLocation,
     getChefsByLocation,
-    addChef,
-    addChefCuisine
 }
