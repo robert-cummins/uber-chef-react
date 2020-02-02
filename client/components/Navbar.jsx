@@ -50,19 +50,24 @@ class Navbar extends React.Component {
                         }
                     </form>
                     <div className="collapse navbar-collapse justify-content-end">
-                    {this.props.chefs[0] &&
-                        <li className="nav-item active">
-                            <Link to={"/"}><button className="btn btn-outline-success my-2 my-sm-0 submit cuisine-submit" type="button">Home</button></Link>
-                        </li>
+                        {this.props.chefs[0] &&
+                            <li className="nav-item active">
+                                <Link to={"/"}><button className="btn btn-outline-success my-2 my-sm-0 submit cuisine-submit" type="button">Home</button></Link>
+                            </li>
+                        }
+                        {!this.props.auth.isAuthenticated &&
+                            <li className="nav-item active">
+                                <Link to={'/sign-up'}><button id="sign-up" className="btn btn-outline-success my-2 my-sm-0 submit cuisine-submit" type="button">Sign Up</button></Link>
+                            </li>
+                        }
+                        {this.props.auth.isAuthenticated ?
+                            <li className="nav-item active">
+                                <Link to="/" onClick={() => [this.props.logout(),location.reload(true)]}><button id="sign-in" className="btn btn-outline-success my-2 my-sm-0 submit cuisine-submit" type="button">Log-out</button></Link>
+                            </li> :
+                            <li className="nav-item active">
+                                <Link to="/log-in"><button id="sign-in" className="btn btn-outline-success my-2 my-sm-0 submit cuisine-submit" type="button">Log-in</button></Link>
+                            </li>
                     }
-                    {!this.props.auth.isAuthenticated &&
-                        <li className="nav-item active">
-                            <Link to={'/sign-up'}><button id="sign-up" className="btn btn-outline-success my-2 my-sm-0 submit cuisine-submit" type="button">Sign Up</button></Link>
-                        </li>
-                    }
-                        <li className="nav-item active">
-                            <Link to="/log-in"><button id="sign-in" className="btn btn-outline-success my-2 my-sm-0 submit cuisine-submit" type="button">Log-in</button></Link>
-                        </li>
                     </div>
 
 
@@ -77,7 +82,7 @@ class Navbar extends React.Component {
 const mapDispatchToProps = (dispatch) => {
     return {
         logout: () => dispatch(logoutUser())
-        
+
     }
 }
 
@@ -89,4 +94,4 @@ const mapStateToProps = (state) => {
 
 }
 
-export default connect(mapStateToProps)(Navbar) 
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar) 
