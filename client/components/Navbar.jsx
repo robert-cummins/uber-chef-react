@@ -55,7 +55,7 @@ class Navbar extends React.Component {
                         </li>
                     }
                         <li className="nav-item active">
-                            <Link to={'chefs/sign-up'}><button id="sign-up" className="btn btn-outline-success my-2 my-sm-0 submit cuisine-submit" type="button">Sign Up</button></Link>
+                            <Link to={'/sign-up'}><button id="sign-up" className="btn btn-outline-success my-2 my-sm-0 submit cuisine-submit" type="button">Sign Up</button></Link>
                         </li>
                         <li className="nav-item active">
                             <Link to="/log-in"><button id="sign-in" className="btn btn-outline-success my-2 my-sm-0 submit cuisine-submit" type="button">Log-in</button></Link>
