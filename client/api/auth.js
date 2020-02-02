@@ -16,7 +16,6 @@ export function register(creds) {
         .set(headers)
         .send(creds)
         .then(res => {
-            console.log(res)
             res.body.token})
 }
 

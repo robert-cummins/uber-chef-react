@@ -32,7 +32,7 @@ class SignUp extends React.Component {
     if (this.state.confirm_password != this.state.password) return this.props.dispatch(loginError("Passwords don't match"))
     this.props.dispatch(registerUserRequest(this.state))
     this.props.dispatch(fetchChefs(this.state.location))
-    // this.props.history.push('/' + this.state.location)
+    this.props.history.push('/' + this.state.location)
   } 
   
   render() {

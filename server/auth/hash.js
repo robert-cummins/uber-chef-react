@@ -6,6 +6,8 @@ function generatePasswordHash (password) {
 }
 
 function comparePasswordToHash (password, hash) {
+  console.log(hash)
+  console.log(password)
   return bcrypt.compare(password, hash)
 }
 
