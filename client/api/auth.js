@@ -15,12 +15,11 @@ export function register(creds) {
         .post('/api/auth/register')
         .set(headers)
         .send(creds)
-        .then(res => {
-            console.log(res)
-            res.body.token})
+        .then(res => res.body.token)
 }
 
 export function login(creds) {
+    
     const token = get('token')
     const headers = { Accept: 'application/json' }
 

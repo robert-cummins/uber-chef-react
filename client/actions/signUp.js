@@ -6,17 +6,8 @@ export function registerUserRequest (creds) {
     return (dispatch) => {
       register(creds)
         .then(token => {
-          console.log("hello")
           const userInfo = saveUserToken(token)
           dispatch(receiveLogin(userInfo))
-        })
-        .then(() => {
-            return dispatch => {
-                getchefsByLocationAndCuisine(chef.location)
-                    .then(res => {
-                        dispatch(getChefs(res.body))
-                    })
-            }
         })
         .catch(err => {
           console.log(err)

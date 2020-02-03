@@ -3,7 +3,6 @@ import { get, set } from './localstorage'
 
 export function isAuthenticated() {
     const token = get('token')
-
     if(token){
         const payload = decode(token)
         const expiry = payload.exp
