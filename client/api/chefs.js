@@ -5,7 +5,6 @@ export function getchefsByLocationAndCuisine(location, cuisine){
     if(location) return request.get('/api/v1/chefs/'+ location)
 }
 
-// export function addNewChef(chef){
-//     return request.post('/api/v1/chefs/sign-up')
-//     .send(chef)
-// }
+export function getChefByEmail(email){
+   return request.get('/api/v1/chefs/email/' + email)
+}

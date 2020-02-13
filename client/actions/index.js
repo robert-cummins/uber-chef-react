@@ -1,12 +1,20 @@
-import { getchefsByLocationAndCuisine, addNewChef } from '../api/chefs'
+import { getchefsByLocationAndCuisine, getChefByEmail } from '../api/chefs'
 
 export const GET_CHEFS = 'GET_CHEFS'
 export const ADD_CHEF = 'ADD_CHEF'
+export const GET_ONE_CHEF = 'GET_ONE_CHEF'
 
 export const getChefs = (chefs) => {
     return {
         type: GET_CHEFS,
         chefs
+    }
+}
+
+export const getOneChef = (chef) => {
+    return {
+        type: GET_ONE_CHEF,
+        chef
     }
 }
 
@@ -23,6 +31,16 @@ export const addChef = (chef) => {
         foodImg1: chef.foodImg1,
         foodImg2: chef.foodImg2,
         foodImg3: chef.foodImg3,
+    }
+}
+
+export function fetchChefByEmail(email){
+    return dispatch => {
+        getChefByEmail(email)
+        .then(chef => {
+            console.log(chef.body.chef_id)
+            dispatch(getOneChef(chef.body))
+        })
     }
 }
 

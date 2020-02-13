@@ -19,7 +19,13 @@ function getChefsByLocation(location, db = connection){
 }
 
 
+function getChefByEmail(email, db = connection){
+    return db('chefs').where('email', email).first()
+  }
+
+
 module.exports = {
     getChefsByCuisineAndLocation,
     getChefsByLocation,
+    getChefByEmail
 }

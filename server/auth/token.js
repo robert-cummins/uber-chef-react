@@ -2,10 +2,10 @@ const jwt = require('jsonwebtoken')
 const verifyJwt = require('express-jwt')
 
 const { comparePasswordToHash } = require('./hash')
-const { getUserByEmail } = require('../db/users')
+const { getChefByEmail } = require('../db/chefs')
 
 function issue(req, res) {
-  getUserByEmail(req.body.email)
+  getChefByEmail(req.body.email)
   .then(user => {
     if (!user) {
        res.status(403).json({ message: 'User does not exist' })

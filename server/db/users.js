@@ -29,9 +29,6 @@ function createUser (chef) {
     })
 }
 
-function getUserByEmail(email, db = database){
-  return db('chefs').where('email', email).first()
-}
 
 function userExists (email, testDb) {
   const db = database
@@ -45,5 +42,4 @@ function userExists (email, testDb) {
 module.exports = {
   userExists,
   createUser,
-  getUserByEmail,
 }

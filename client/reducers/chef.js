@@ -1,4 +1,4 @@
-import {GET_CHEFS, ADD_CHEF} from '../actions/index'
+import {GET_CHEFS, ADD_CHEF, GET_ONE_CHEF} from '../actions/index'
 
 function chefReducer(state = [], action){
     switch(action.type){
@@ -20,6 +20,9 @@ function chefReducer(state = [], action){
                     foodImg3: action.foodImg3,
                 }
             ]
+
+        case GET_ONE_CHEF:
+            return action.chef
 
         default:
             return state

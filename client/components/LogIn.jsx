@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { loginUser, loginError } from '../actions/login'
+import {fetchChefByEmail} from '../actions/index'
 
 class LogIn extends React.Component {
   constructor() {
@@ -23,7 +24,13 @@ class LogIn extends React.Component {
     e.preventDefault()
     let { email, password } = this.state
     this.props.dispatch(loginUser({ email, password }))
-    .then(() => {})
+    .then(() => {
+      // if(this.props.auth.isAuthenticated){
+      //   this.props.history.push('/' + this.state.location)
+      // }
+      this.props.dispatch(fetchChefByEmail(this.props.auth.user.user_email))
+      console.log(this.props.auth.user.user_email)
+    })
   } 
   
   render() {

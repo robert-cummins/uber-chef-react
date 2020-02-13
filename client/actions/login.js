@@ -35,7 +35,6 @@ export function requestLogin () {
         .then((token) => {
           const userInfo = saveUserToken(token)
           dispatch(receiveLogin(userInfo))
-            .then(userData => {console.log(userData)})
         })
         .catch(err => {
           dispatch(loginError(err.response.body.message))
