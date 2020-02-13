@@ -25,12 +25,19 @@ class LogIn extends React.Component {
     let { email, password } = this.state
     this.props.dispatch(loginUser({ email, password }))
     .then(() => {
-      // if(this.props.auth.isAuthenticated){
-      //   this.props.history.push('/' + this.state.location)
-      // }
       this.props.dispatch(fetchChefByEmail(this.props.auth.user.user_email))
-      console.log(this.props.auth.user.user_email)
+      .then(chef => {
+        console.log(chef.chef.location)
+        console.log(chef.chef.chef_id)
+        if(this.props.auth.isAuthenticated){
+          this.props.history.push('/chefs/' + chef.chef.location + '/' + chef.chef.chef_id)
+        }
+      })
     })
+
+    
+    
+
   } 
   
   render() {
@@ -64,9 +71,10 @@ class LogIn extends React.Component {
 }
 
 
-const mapStateToProps = ({ auth }) => {
+const mapStateToProps = (state) => {
   return {
-    auth
+    chefs: state.chefReducer,
+    auth: state.auth
   }
 }
 

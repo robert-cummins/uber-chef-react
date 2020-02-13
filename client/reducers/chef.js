@@ -22,7 +22,7 @@ function chefReducer(state = [], action){
             ]
 
         case GET_ONE_CHEF:
-            return action.chef
+            return [action.chef]
 
         default:
             return state

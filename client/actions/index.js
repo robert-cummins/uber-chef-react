@@ -36,10 +36,9 @@ export const addChef = (chef) => {
 
 export function fetchChefByEmail(email){
     return dispatch => {
-        getChefByEmail(email)
+        return getChefByEmail(email)
         .then(chef => {
-            console.log(chef.body.chef_id)
-            dispatch(getOneChef(chef.body))
+           return dispatch(getOneChef(chef.body))
         })
     }
 }
