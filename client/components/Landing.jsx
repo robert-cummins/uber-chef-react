@@ -26,7 +26,7 @@ class Landing extends React.Component {
                             <option value="Christchurch">Christchurch</option>
                             <option value="Hamilton">Hamilton</option>
                         </select>
-                        <Link to={this.state.location}><button id="main-submit" className="btn btn-outline-success my-2 my-sm-0 submit" type="submit">Find a Chef</button></Link>
+                        <Link to={"/chefs/" + this.state.location}><button id="main-submit" className="btn btn-outline-success my-2 my-sm-0 submit" type="submit">Find a Chef</button></Link>
                     </form>
                 </div>
             </div>
