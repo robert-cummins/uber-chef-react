@@ -1,10 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { fetchChefs } from '../actions/index'
+import { loginError } from '../actions/login'
 
 class Chef extends React.Component {
     componentDidMount() {
         this.props.dispatch(fetchChefs(this.props.match.params.location))
+        this.props.dispatch(loginError(''))
     }
 
     render() {
@@ -83,9 +85,9 @@ class Chef extends React.Component {
                                
 const mapStateToProps = (state) => {
     return {
-        chefs: state.chefReducer
+      chefs: state.chefReducer,
+      auth: state.auth
     }
-                                
-}
+  }
                                 
 export default connect(mapStateToProps)(Chef) 

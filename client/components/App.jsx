@@ -6,6 +6,7 @@ import Chefs from './Chefs'
 import Chef from './Chef'
 import SignUp from './SignUp'
 import LogIn from './LogIn'
+import { connect } from 'react-redux'
 
 
 const App = () => {
@@ -24,4 +25,10 @@ const App = () => {
   )
 }
 
-export default App
+const mapStateToProps = (state) => {
+  return {
+    auth: state.auth
+  }
+}
+
+export default connect(mapStateToProps)(App) 
