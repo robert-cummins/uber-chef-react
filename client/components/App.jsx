@@ -7,6 +7,7 @@ import Chef from './Chef'
 import SignUp from './SignUp'
 import LogIn from './LogIn'
 import { connect } from 'react-redux'
+import Update from './Update'
 
 
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
       <Route exact path="/log-in" component={LogIn}/>
       <Route exact path="/chefs/:location" component={Chefs}/>
       <Route exact path="/chefs/:location/:id" component={Chef}/>
+      <Route exact path="/chefs/:location/update/:id" component={Update}/>
     </Router>
     </>
   )

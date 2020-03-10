@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { fetchChefs, deleteChef } from '../actions/index'
 import { loginError } from '../actions/login'
+import {Link} from 'react-router-dom'
 
 class Chef extends React.Component {
     componentDidMount() {
@@ -29,8 +30,8 @@ class Chef extends React.Component {
                                                 
                                                     <button id="delete" onClick={this.handleDelete} className="btn btn-danger chef-button ">Delete Profile</button>
                                                
-                                                <a href="/update-chef/{{chef.chef_id}}"><button id='update'
-                                                className="btn btn-outline-success my-2 my-sm-0 submit" type="button">Update Profile</button></a>
+                                                <Link to={"/chefs/" + this.props.match.params.location + "/update/" + this.props.match.params.id}><button id='update'
+                                                className="btn btn-outline-success my-2 my-sm-0 submit" type="button">Update Profile</button></Link>
                                             </div>
                                     </div>
                                     </div>

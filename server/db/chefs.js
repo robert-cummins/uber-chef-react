@@ -27,9 +27,19 @@ function deleteChef(id, db=connection){
     return db('chefs').where('chef_id', id).delete().then(id => {console.log(id)})
   }
 
+  function updateChef(id, chef, db=database){
+    return db('chefs').where('chef_id', id).update(chef)
+}
+
+function updateChefCuisne(id, chefCuisine, db=database){
+    return db('chefCuisine').where('chef_id', id).update(chefCuisine)
+}
+
 module.exports = {
     getChefsByCuisineAndLocation,
     getChefsByLocation,
     getChefByEmail,
-    deleteChef
+    deleteChef,
+    updateChef,
+    updateChefCuisne
 }
