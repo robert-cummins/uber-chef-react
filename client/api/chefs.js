@@ -13,6 +13,7 @@ export function APIdeleteChef(id){
     return request.del('/api/v1/chefs/delete-chef/' + id).then(() => {})
 }
 
-export function APIupdateChef(chef){
-    return request.put('/api/v1/chefs/delete-chef/' + chef.chef_id).send(chef)
+export function APIupdateChef(chef, id){
+    console.log(chef)
+    return request.put('/api/v1/chefs/update-chef/' + id).send(chef)
 }

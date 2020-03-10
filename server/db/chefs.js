@@ -1,4 +1,5 @@
 const connection = require('./connection')
+const {generatePasswordHash} = require('../auth/hash')
 
 function getChefsByCuisineAndLocation(cuisineId, location, db = connection) {
     const baseQuery = db('cuisine')
@@ -27,13 +28,32 @@ function deleteChef(id, db=connection){
     return db('chefs').where('chef_id', id).delete().then(id => {console.log(id)})
   }
 
-  function updateChef(id, chef, db=database){
-    return db('chefs').where('chef_id', id).update(chef)
+  function updateChef(id, chef, db=connection){
+    return generatePasswordHash(chef.password)
+    .then(hash => {
+     let dataChef = { 
+      name: chef.name,
+      chefImg: chef.chefImg,
+      email: chef.email,
+      password: hash,
+      location: chef.location,
+      bio: chef.bio,
+      foodImg1: chef.foodImg1,
+      foodImg2: chef.foodImg2,
+      foodImg3: chef.foodImg3 
+    }
+      return db('chefs').where('chef_id', id).update(dataChef)
+      .then(chefId =>{
+        let chefCuisine = {
+          chef_id: chefId[0],
+          cuisine_id: chef.cuisine
+        }
+        db('chefCuisine').where('chef_id', id).update(chefCuisine)
+      })
+    })   
 }
 
-function updateChefCuisne(id, chefCuisine, db=database){
-    return db('chefCuisine').where('chef_id', id).update(chefCuisine)
-}
+
 
 module.exports = {
     getChefsByCuisineAndLocation,
@@ -41,5 +61,4 @@ module.exports = {
     getChefByEmail,
     deleteChef,
     updateChef,
-    updateChefCuisne
 }

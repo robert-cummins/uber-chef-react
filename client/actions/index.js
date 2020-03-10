@@ -71,8 +71,9 @@ export function deleteChef(id) {
     }
   }
 
-  export function updateChef(chef){
+  export function updateChef(chef, id){
+      console.log('update')
       return dispatch => {
-          APIupdateChef(chef).then(() => {})
+          APIupdateChef(chef, id).then(() => {})
       }
   }

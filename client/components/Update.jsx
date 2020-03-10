@@ -1,15 +1,17 @@
 import React from 'react'
-import { fetchChefs } from '../actions/index'
-import { registerUserRequest } from '../actions/signUp'
+import { updateChef } from '../actions/index'
 import { connect } from 'react-redux'
 import { loginError } from '../actions/login'
 
-class SignUp extends React.Component {
+class Update extends React.Component {
   constructor() {
       super()
       this.state = {
         name: 'name',
         chefImg: 'https://apsec.iafor.org/wp-content/uploads/sites/37/2017/02/IAFOR-Blank-Avatar-Image.jpg',
+        email: 'name@example.com',
+        password: 'password',
+        confirm_password: 'confirm password',
         location: 'Wellington',
         bio: 'Write a short Bio',
         cuisine: 201,
@@ -26,12 +28,9 @@ class SignUp extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault()
     if (this.state.confirm_password != this.state.password) return this.props.dispatch(loginError("Passwords don't match"))
-    this.props.dispatch(registerUserRequest(this.state))
-    this.props.dispatch(fetchChefs(this.state.location))
+    this.props.dispatch(updateChef(this.state, this.props.match.params.id))
+    this.props.history.push('/' + 'chefs/' + this.state.location + "/" + this.props.match.params.id)
     
-    if(this.props.auth.isAuthenticated){
-      this.props.history.push('/' + 'chefs/' + this.state.location)
-    }
     
   } 
   
@@ -46,6 +45,10 @@ class SignUp extends React.Component {
             <div className="form-group">
                 <label htmlFor="exampleFormControlInput2">Profile Picture</label>
                 <input onChange={this.handleChange} name="chefImg" type="text" className="form-control" id="exampleFormControlInput2" placeholder="img"/>
+            </div>
+            <div className="form-group">
+                <label htmlFor="exampleFormControlInput3">Email address</label>
+                <input onChange={this.handleChange} name="email" type="email" className="form-control" id="exampleFormControlInput3" placeholder="name@example.com"/>
             </div>
             <div className="form-group">
                 <label htmlFor="exampleFormControlSelect4">Location</label>
@@ -81,6 +84,12 @@ class SignUp extends React.Component {
                 <input onChange={this.handleChange} name="foodImg3" type="text" className="form-control" id="exampleFormControlInput9" placeholder="Img3"/>
             </div>
             {this.props.auth.errorMessage && <><h1><span className="badge badge-danger badge-lg">{this.props.auth.errorMessage}</span></h1><br></br></>}
+            <div className="form-group">
+                <label htmlFor="exampleFormControlInput10">Password</label>
+                <input onChange={this.handleChange} name="password" type="text" className="form-control" id="exampleFormControlInput10" placeholder="password"/>
+                <label htmlFor="exampleFormControlInput11">Confirm Password</label>
+                <input onChange={this.handleChange} name="confirm_password" type="text" className="form-control" id="exampleFormControlInput11" placeholder="confirm password"/>
+            </div>
             
             <button onClick={this.handleSubmit} type="submit" className="btn btn-primary submitnpm run debug
             ">Submit</button>
@@ -98,4 +107,4 @@ const mapStateToProps = (state) => {
     }
   }
 
-export default connect(mapStateToProps)(SignUp) 
+export default connect(mapStateToProps)(Update) 

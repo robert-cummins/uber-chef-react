@@ -32,18 +32,10 @@ router.delete('/delete-chef/:id', (req, res) => {
     db.deleteChef(req.params.id)
   })
 
-  router.put("/update-chef/:id", (req, res) => {
-    
   
+router.put("/update-chef/:id", (req, res) => {
     db.updateChef(req.params.id, req.body)
-    .then(el => {
-      let updateChefCuisine = {
-        chef_id: req.params.id,
-        cuisine_id: req.body.cuisine
-      }
-      db.updateChefCuisne(req.params.id, updateChefCuisine)
-      .then((el) => console.log(el) )
-    })
+    .then(id => console.log(id))
   });
 
   
