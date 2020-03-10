@@ -33,7 +33,7 @@ class SignUp extends React.Component {
     this.props.dispatch(fetchChefs(this.state.location))
     
     if(this.props.auth.isAuthenticated){
-      this.props.history.push('/' + this.state.location)
+      this.props.history.push('/' + 'chefs/' + this.state.location)
     }
     
   } 

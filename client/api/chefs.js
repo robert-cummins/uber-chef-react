@@ -8,3 +8,7 @@ export function getchefsByLocationAndCuisine(location, cuisine){
 export function getChefByEmail(email){
    return request.get('/api/v1/chefs/email/' + email)
 }
+
+export function APIdeleteChef(id){
+    return request.del('/api/v1/chefs/delete-chef/' + id).then(() => {})
+}

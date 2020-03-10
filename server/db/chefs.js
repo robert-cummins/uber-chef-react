@@ -23,9 +23,13 @@ function getChefByEmail(email, db = connection){
     return db('chefs').where('email', email).first()
   }
 
+function deleteChef(id, db=connection){
+    return db('chefs').where('chef_id', id).delete().then(id => {console.log(id)})
+  }
 
 module.exports = {
     getChefsByCuisineAndLocation,
     getChefsByLocation,
-    getChefByEmail
+    getChefByEmail,
+    deleteChef
 }

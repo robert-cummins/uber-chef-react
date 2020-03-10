@@ -2,9 +2,9 @@ import { saveUserToken } from '../utils/auth'
 import { register } from '../api/auth'
 import { receiveLogin, loginError } from './login'
 
-export function registerUserRequest (creds) {
+export function registerUserRequest (chef) {
     return (dispatch) => {
-      register(creds)
+      register(chef)
         .then(token => {
           const userInfo = saveUserToken(token)
           dispatch(receiveLogin(userInfo))

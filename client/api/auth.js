@@ -3,7 +3,7 @@ import { get } from '../utils/localstorage'
 import { isAuthenticated } from '../utils/auth'
 
 
-export function register(creds) {
+export function register(chef) {
     const token = get('token')
     const headers = { Accept: 'application/json' }
 
@@ -14,7 +14,7 @@ export function register(creds) {
     return request
         .post('/api/auth/register')
         .set(headers)
-        .send(creds)
+        .send(chef)
         .then(res => res.body.token)
 }
 

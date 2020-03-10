@@ -1,12 +1,17 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { fetchChefs } from '../actions/index'
+import { fetchChefs, deleteChef } from '../actions/index'
 import { loginError } from '../actions/login'
 
 class Chef extends React.Component {
     componentDidMount() {
         this.props.dispatch(fetchChefs(this.props.match.params.location))
         this.props.dispatch(loginError(''))
+    }
+
+    handleDelete = (e) => {
+        this.props.dispatch(deleteChef(this.props.match.params.id))
+        this.props.history.push('/' + 'chefs/' + this.props.match.params.location)
     }
 
     render() {
@@ -21,9 +26,9 @@ class Chef extends React.Component {
                                         <img className="chef-page-img" src={chef.chefImg} alt={chef.name}/>
 
                                             <div className="chef-button">
-                                                <form action="/delete-chef/{{chef.chef_id}}" method="POST">
-                                                    <button id="delete" className="btn btn-danger chef-button ">Delete Profile</button>
-                                                </form>
+                                                
+                                                    <button id="delete" onClick={this.handleDelete} className="btn btn-danger chef-button ">Delete Profile</button>
+                                               
                                                 <a href="/update-chef/{{chef.chef_id}}"><button id='update'
                                                 className="btn btn-outline-success my-2 my-sm-0 submit" type="button">Update Profile</button></a>
                                             </div>

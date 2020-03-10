@@ -1,4 +1,4 @@
-import { getchefsByLocationAndCuisine, getChefByEmail } from '../api/chefs'
+import { getchefsByLocationAndCuisine, getChefByEmail, APIdeleteChef } from '../api/chefs'
 
 export const GET_CHEFS = 'GET_CHEFS'
 export const ADD_CHEF = 'ADD_CHEF'
@@ -63,3 +63,12 @@ export function fetchChefs(location, cuisine) {
     }
 }
 
+
+export function deleteChef(id) {
+    return dispatch => {
+      APIdeleteChef(id)
+        .then(() => {
+          
+        })
+    }
+  }

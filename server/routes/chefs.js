@@ -4,7 +4,6 @@ const db = require('../db/chefs')
 
 
 router.get('/:id', (req, res) => {
-    console.log(req.params.id)
     let location = req.params.id
     let cuisine = req.query.cuisine_id
     if (cuisine !== NaN) {
@@ -29,9 +28,9 @@ router.get('/email/:email', (req, res) => {
         })
 })
 
-
-
-
+router.delete('/delete-chef/:id', (req, res) => {
+    db.deleteChef(req.params.id)
+  })
 
 
 
